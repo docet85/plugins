@@ -48,6 +48,47 @@ FIRQuery *getQuery(NSDictionary *arguments) {
     NSNumber *descending = orderByParameters[1];
     query = [query queryOrderedByField:fieldName descending:[descending boolValue]];
   }
+  id fieldValue = parameters[@"startAt"];
+    if (fieldValue) {
+      query = [query queryStartingAtValues:fieldValue];
+    }
+  id fieldValue = parameters[@"startAfter"];
+      if (fieldValue) {
+        query = [query queryStartingAfterValues:fieldValue];
+      }
+  id snapshot = parameters[@"startAtDocument"];
+      if (snapshot) {
+        FIRDocumentSnapshot *documentSnapshot = snapshot;
+        query = [query queryStartingAtDocument:documentSnapshot];
+      }
+  id snapshot = parameters[@"startAfterDocument"];
+      if (snapshot) {
+        FIRDocumentSnapshot *documentSnapshot = snapshot;
+        query = [query queryStartingAfterDocument:documentSnapshot];
+      }
+  id fieldValue = parameters[@"endAt"];
+      if (fieldValue) {
+        query = [query queryEndingAtValues:fieldValue];
+      }
+  id fieldValue = parameters[@"endAfter"];
+      if (fieldValue) {
+        query = [query queryEndingAfterValues:fieldValue];
+      }
+  id snapshot = parameters[@"endAtDocument"];
+      if (snapshot) {
+        FIRDocumentSnapshot *documentSnapshot = snapshot;
+        query = [query queryEndingAtDocument:documentSnapshot];
+      }
+  id snapshot = parameters[@"endAfterDocument"];
+      if (snapshot) {
+        FIRDocumentSnapshot *documentSnapshot = snapshot;
+        query = [query queryEndingAfterDocument:documentSnapshot];
+      }
+  id limit = parameters[@"limit"];
+      if (limit) {
+        NSNumber *limitedTo = limit;
+        query = [query queryLimitedTo:limitedTo];
+      }
   return query;
 }
 
