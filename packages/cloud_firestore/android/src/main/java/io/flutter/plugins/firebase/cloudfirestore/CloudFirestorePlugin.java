@@ -87,11 +87,49 @@ public class CloudFirestorePlugin implements MethodCallHandler {
     }
     @SuppressWarnings("unchecked")
     List<Object> orderBy = (List<Object>) parameters.get("orderBy");
-    if (orderBy == null) return query;
-    String orderByFieldName = (String) orderBy.get(0);
-    Boolean descending = (Boolean) orderBy.get(1);
-    Query.Direction direction = descending ? Query.Direction.DESCENDING : Query.Direction.ASCENDING;
-    return query.orderBy(orderByFieldName, direction);
+    if (orderBy != null){
+      String orderByFieldName = (String) orderBy.get(0);
+      Boolean descending = (Boolean) orderBy.get(1);
+      Query.Direction direction = descending ? Query.Direction.DESCENDING : Query.Direction.ASCENDING;
+      query = query.orderBy(orderByFieldName, direction);
+    @SuppressWarnings("unchecked")
+    Object fieldValue = (Object) parameters.get("startAt");
+    if (fieldValue != null)
+      query = query.startAt(fieldValue);
+    @SuppressWarnings("unchecked")
+    Object fieldValue = (Object) parameters.get("startAfter");
+    if (fieldValue != null)
+      query = query.startAfter(fieldValue);
+    @SuppressWarnings("unchecked")
+    DocumentSnapshot documentSnapshot = (DocumentSnapshot) parameters.get("startAtDocument");
+    if (documentSnapshot != null)
+      query = query.startAt(documentSnapshot);
+    @SuppressWarnings("unchecked")
+    DocumentSnapshot documentSnapshot = (DocumentSnapshot) parameters.get("startAfterDocument");
+    if (documentSnapshot != null)
+      query = query.startAfter(documentSnapshot);
+    @SuppressWarnings("unchecked")
+    Object fieldValue = (Object) parameters.get("endAt");
+    if (fieldValue != null)
+      query = query.endAt(fieldValue);
+    @SuppressWarnings("unchecked")
+    Object fieldValue = (Object) parameters.get("endAfter");
+    if (fieldValue != null)
+      query = query.endAfter(fieldValue);
+    @SuppressWarnings("unchecked")
+    DocumentSnapshot documentSnapshot = (DocumentSnapshot) parameters.get("endAtDocument");
+    if (documentSnapshot != null)
+      query = query.endAt(documentSnapshot);
+    @SuppressWarnings("unchecked")
+    DocumentSnapshot documentSnapshot = (DocumentSnapshot) parameters.get("endAfterDocument");
+    if (documentSnapshot != null)
+      query = query.endAfter(documentSnapshot);
+    @SuppressWarnings("unchecked")
+    Long limit = (Long) parameters.get("limit");
+    if (limit != null)
+      query = query.limit(limit);
+
+    return query;
   }
 
   private class DocumentObserver implements EventListener<DocumentSnapshot> {

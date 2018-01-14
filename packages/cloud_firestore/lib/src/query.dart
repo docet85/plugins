@@ -135,4 +135,127 @@ class Query {
       'orderBy': <dynamic>[field, descending]
     });
   }
+
+  /// Creates and returns a new [Query] that starts at the provided fields
+  /// [value] relative to the order of the query. Valid only if [orderBy] had
+  /// been issued. Conflicts with [startAfter], [startAtDocument], and
+  /// [startAfterDocument] .
+  Query startAt(dynamic value) {
+    assert(_parameters.containsKey('orderBy'));
+    assert(!_parameters.containsKey('startAfter'));
+    assert(!_parameters.containsKey('startAt'));
+    assert(!_parameters.containsKey('startAfterDocument'));
+    assert(!_parameters.containsKey('startAtDocument'));
+    return _copyWithParameters(<String, dynamic>{
+      'startAt': value });
+  }
+
+  /// Creates and returns a new [Query] that starts at the provided document
+  /// [documentSnapshot] relative to the order of the query. Valid only if
+  /// [orderBy] had been issued. Conflicts with [startAfterDocument], [startAt],
+  /// and [startAfter] .
+    Query startAtDocument(DocumentSnapshot documentSnapshot) {
+    assert(_parameters.containsKey('orderBy'));
+    assert(!_parameters.containsKey('startAfter'));
+    assert(!_parameters.containsKey('startAt'));
+    assert(!_parameters.containsKey('startAfterDocument'));
+    assert(!_parameters.containsKey('startAtDocument'));
+    return _copyWithParameters(<String, dynamic>{
+      'startAt': documentSnapshot });
+  }
+
+  /// Creates and returns a new [Query] that starts after the provided fields
+  /// [value] relative to the order of the query. Valid only if [orderBy] had
+  /// been issued. Conflicts with [startAt], [startAtDocument], and
+  /// [startAfterDocument] .
+  Query startAfter(dynamic value) {
+    assert(_parameters.containsKey('orderBy'));
+    assert(!_parameters.containsKey('startAfter'));
+    assert(!_parameters.containsKey('startAt'));
+    assert(!_parameters.containsKey('startAfterDocument'));
+    assert(!_parameters.containsKey('startAtDocument'));
+    return _copyWithParameters(<String, dynamic>{
+      'startAfter': value });
+  }
+
+  /// Creates and returns a new [Query] that starts after the provided document
+  /// [documentSnapshot] relative to the order of the query. Valid only if
+  /// [orderBy] had been issued. Conflicts with [startAtDocument], [startAt],
+  /// and [startAfter] .
+  Query startAfterDocument(DocumentSnapshot documentSnapshot) {
+    assert(_parameters.containsKey('orderBy'));
+    assert(!_parameters.containsKey('startAfter'));
+    assert(!_parameters.containsKey('startAt'));
+    assert(!_parameters.containsKey('startAfterDocument'));
+    assert(!_parameters.containsKey('startAtDocument'));
+    return _copyWithParameters(<String, dynamic>{
+      'startAfter': documentSnapshot });
+  }
+
+  /// Creates and returns a new [Query] that ends at the provided fields
+  /// [value] relative to the order of the query. Valid only if [orderBy] had
+  /// been issued. Conflicts with [endAfter], [endAtDocument], and
+  /// [endAfterDocument].
+  Query endAt(dynamic value) {
+    assert(_parameters.containsKey('orderBy'));
+    assert(!_parameters.containsKey('endAfter'));
+    assert(!_parameters.containsKey('endAt'));
+    assert(!_parameters.containsKey('endAfterDocument'));
+    assert(!_parameters.containsKey('endAtDocument'));
+    return _copyWithParameters(<String, dynamic>{
+      'endAt': value });
+  }
+
+  /// Creates and returns a new [Query] that ends at the provided document
+  /// [documentSnapshot] relative to the order of the query. Valid only if
+  /// [orderBy] had been issued. Conflicts with  [endAfterDocument], [endAt],
+  /// and [endAfter].
+  Query endAtDocument(DocumentSnapshot documentSnapshot) {
+    assert(_parameters.containsKey('orderBy'));
+    assert(!_parameters.containsKey('endAfter'));
+    assert(!_parameters.containsKey('endAt'));
+    assert(!_parameters.containsKey('endAfterDocument'));
+    assert(!_parameters.containsKey('endAtDocument'));
+    return _copyWithParameters(<String, DocumentSnapshot>{
+      'endAt': documentSnapshot });
+  }
+
+  /// Creates and returns a new [Query] that ends after the provided fields
+  /// [value] relative to the order of the query. Valid only if [orderBy] had
+  /// been issued. Conflicts with [endAt], [endAtDocument], and
+  /// [endAfterDocument].
+  Query endAfter(dynamic value) {
+    assert(_parameters.containsKey('orderBy'));
+    assert(!_parameters.containsKey('endAfter'));
+    assert(!_parameters.containsKey('endAt'));
+    assert(!_parameters.containsKey('endAfterDocument'));
+    assert(!_parameters.containsKey('endAtDocument'));
+    return _copyWithParameters(<String, dynamic>{
+      'endAfter': value });
+  }
+
+  /// Creates and returns a new [Query] that ends after the provided document
+  /// [documentSnapshot] relative to the order of the query. Valid only if
+  /// [orderBy] had been issued. [endAtDocument], [endAt],
+  /// and [endAfter].
+  Query endAfterDocument(DocumentSnapshot documentSnapshot) {
+    assert(_parameters.containsKey('orderBy'));
+    assert(!_parameters.containsKey('endAfter'));
+    assert(!_parameters.containsKey('endAt'));
+    assert(!_parameters.containsKey('endAfterDocument'));
+    assert(!_parameters.containsKey('endAtDocument'));
+    return _copyWithParameters(<String, DocumentSnapshot>{
+      'endAfter': documentSnapshot });
+  }
+
+  /// Creates and returns a new [Query] that's additionally limited to only
+  /// return up to the specified number of documents.
+  Query limit(int limit) {
+    assert(!_parameters.containsKey('orderBy'));
+    assert(limit >= 1);
+
+    return _copyWithParameters(<String, int>{
+      'limit': limit
+    });
+  }
 }
