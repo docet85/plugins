@@ -52,7 +52,7 @@ FIRQuery *getQuery(NSDictionary *arguments) {
     if (fieldValue) {
       query = [query queryStartingAtValues:fieldValue];
     }
-  id fieldValue = parameters[@"startAfter"];
+  fieldValue = parameters[@"startAfter"];
       if (fieldValue) {
         query = [query queryStartingAfterValues:fieldValue];
       }
@@ -61,30 +61,30 @@ FIRQuery *getQuery(NSDictionary *arguments) {
         FIRDocumentSnapshot *documentSnapshot = snapshot;
         query = [query queryStartingAtDocument:documentSnapshot];
       }
-  id snapshot = parameters[@"startAfterDocument"];
+  snapshot = parameters[@"startAfterDocument"];
       if (snapshot) {
         FIRDocumentSnapshot *documentSnapshot = snapshot;
         query = [query queryStartingAfterDocument:documentSnapshot];
       }
-  id fieldValue = parameters[@"endAt"];
+  fieldValue = parameters[@"endAt"];
       if (fieldValue) {
         query = [query queryEndingAtValues:fieldValue];
       }
-  id fieldValue = parameters[@"endAfter"];
+  fieldValue = parameters[@"endAfter"];
       if (fieldValue) {
         query = [query queryEndingAfterValues:fieldValue];
       }
-  id snapshot = parameters[@"endAtDocument"];
+  snapshot = parameters[@"endAtDocument"];
       if (snapshot) {
         FIRDocumentSnapshot *documentSnapshot = snapshot;
         query = [query queryEndingAtDocument:documentSnapshot];
       }
-  id snapshot = parameters[@"endAfterDocument"];
+  snapshot = parameters[@"endAfterDocument"];
       if (snapshot) {
         FIRDocumentSnapshot *documentSnapshot = snapshot;
         query = [query queryEndingAfterDocument:documentSnapshot];
       }
-  id limit = parameters[@"limit"];
+  limit = parameters[@"limit"];
       if (limit) {
         NSNumber *limitedTo = limit;
         query = [query queryLimitedTo:limitedTo];

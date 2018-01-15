@@ -87,48 +87,48 @@ public class CloudFirestorePlugin implements MethodCallHandler {
     }
     @SuppressWarnings("unchecked")
     List<Object> orderBy = (List<Object>) parameters.get("orderBy");
-    if (orderBy != null){
+    if (orderBy != null) {
       String orderByFieldName = (String) orderBy.get(0);
       Boolean descending = (Boolean) orderBy.get(1);
       Query.Direction direction = descending ? Query.Direction.DESCENDING : Query.Direction.ASCENDING;
       query = query.orderBy(orderByFieldName, direction);
+    }
     @SuppressWarnings("unchecked")
-    Object fieldValue = (Object) parameters.get("startAt");
-    if (fieldValue != null)
-      query = query.startAt(fieldValue);
+    Object fieldValueSA = (Object) parameters.get("startAt");
+    if (fieldValueSA != null)
+      query = query.startAt(fieldValueSA);
     @SuppressWarnings("unchecked")
-    Object fieldValue = (Object) parameters.get("startAfter");
-    if (fieldValue != null)
-      query = query.startAfter(fieldValue);
+    Object fieldValueSAF = (Object) parameters.get("startAfter");
+    if (fieldValueSAF != null)
+      query = query.startAfter(fieldValueSAF);
     @SuppressWarnings("unchecked")
-    DocumentSnapshot documentSnapshot = (DocumentSnapshot) parameters.get("startAtDocument");
-    if (documentSnapshot != null)
-      query = query.startAt(documentSnapshot);
+    DocumentSnapshot documentSnapshotSA = (DocumentSnapshot) parameters.get("startAtDocument");
+    if (documentSnapshotSA != null)
+      query = query.startAt(documentSnapshotSA);
     @SuppressWarnings("unchecked")
-    DocumentSnapshot documentSnapshot = (DocumentSnapshot) parameters.get("startAfterDocument");
-    if (documentSnapshot != null)
-      query = query.startAfter(documentSnapshot);
+    DocumentSnapshot documentSnapshotSAF = (DocumentSnapshot) parameters.get("startAfterDocument");
+    if (documentSnapshotSAF != null)
+      query = query.startAfter(documentSnapshotSAF);
     @SuppressWarnings("unchecked")
-    Object fieldValue = (Object) parameters.get("endAt");
-    if (fieldValue != null)
-      query = query.endAt(fieldValue);
+    Object fieldValueEA = (Object) parameters.get("endAt");
+    if (fieldValueEA != null)
+      query = query.endAt(fieldValueEA);
     @SuppressWarnings("unchecked")
-    Object fieldValue = (Object) parameters.get("endAfter");
-    if (fieldValue != null)
-      query = query.endAfter(fieldValue);
+    Object fieldValueEAF = (Object) parameters.get("endAfter");
+    if (fieldValueEAF != null)
+      query = query.endAfter(fieldValueEAF);
     @SuppressWarnings("unchecked")
-    DocumentSnapshot documentSnapshot = (DocumentSnapshot) parameters.get("endAtDocument");
-    if (documentSnapshot != null)
-      query = query.endAt(documentSnapshot);
+    DocumentSnapshot documentSnapshotEA = (DocumentSnapshot) parameters.get("endAtDocument");
+    if (documentSnapshotEA != null)
+      query = query.endAt(documentSnapshotEA);
     @SuppressWarnings("unchecked")
-    DocumentSnapshot documentSnapshot = (DocumentSnapshot) parameters.get("endAfterDocument");
-    if (documentSnapshot != null)
-      query = query.endAfter(documentSnapshot);
+    DocumentSnapshot documentSnapshotEAF = (DocumentSnapshot) parameters.get("endAfterDocument");
+    if (documentSnapshotEAF != null)
+      query = query.endAfter(documentSnapshotEAF);
     @SuppressWarnings("unchecked")
     Long limit = (Long) parameters.get("limit");
     if (limit != null)
       query = query.limit(limit);
-
     return query;
   }
 
