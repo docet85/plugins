@@ -114,17 +114,17 @@ public class CloudFirestorePlugin implements MethodCallHandler {
     if (fieldValueEA != null)
       query = query.endAt(fieldValueEA);
     @SuppressWarnings("unchecked")
-    Object fieldValueEAF = (Object) parameters.get("endAfter");
-    if (fieldValueEAF != null)
-      query = query.endAfter(fieldValueEAF);
+    Object fieldValueB = (Object) parameters.get("endBefore");
+    if (fieldValueB != null)
+      query = query.endBefore(fieldValueB);
     @SuppressWarnings("unchecked")
     DocumentSnapshot documentSnapshotEA = (DocumentSnapshot) parameters.get("endAtDocument");
     if (documentSnapshotEA != null)
       query = query.endAt(documentSnapshotEA);
     @SuppressWarnings("unchecked")
-    DocumentSnapshot documentSnapshotEAF = (DocumentSnapshot) parameters.get("endAfterDocument");
-    if (documentSnapshotEAF != null)
-      query = query.endAfter(documentSnapshotEAF);
+    DocumentSnapshot documentSnapshotEB = (DocumentSnapshot) parameters.get("endBeforeDocument");
+    if (documentSnapshotEB != null)
+      query = query.endBefore(documentSnapshotEB);
     @SuppressWarnings("unchecked")
     Long limit = (Long) parameters.get("limit");
     if (limit != null)

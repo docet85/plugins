@@ -70,19 +70,19 @@ FIRQuery *getQuery(NSDictionary *arguments) {
       if (fieldValue) {
         query = [query queryEndingAtValues:fieldValue];
       }
-  fieldValue = parameters[@"endAfter"];
+  fieldValue = parameters[@"endBefore"];
       if (fieldValue) {
-        query = [query queryEndingAfterValues:fieldValue];
+        query = [query queryEndingBeforeValues:fieldValue];
       }
   snapshot = parameters[@"endAtDocument"];
       if (snapshot) {
         FIRDocumentSnapshot *documentSnapshot = snapshot;
         query = [query queryEndingAtDocument:documentSnapshot];
       }
-  snapshot = parameters[@"endAfterDocument"];
+  snapshot = parameters[@"endBeforeDocument"];
       if (snapshot) {
         FIRDocumentSnapshot *documentSnapshot = snapshot;
-        query = [query queryEndingAfterDocument:documentSnapshot];
+        query = [query queryEndingBeforeDocument:documentSnapshot];
       }
   limit = parameters[@"limit"];
       if (limit) {

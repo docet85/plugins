@@ -194,13 +194,13 @@ class Query {
 
   /// Creates and returns a new [Query] that ends at the provided fields
   /// [value] relative to the order of the query. Valid only if [orderBy] had
-  /// been issued. Conflicts with [endAfter], [endAtDocument], and
-  /// [endAfterDocument].
+  /// been issued. Conflicts with [endBefore], [endAtDocument], and
+  /// [endBeforeDocument].
   Query endAt(dynamic value) {
     assert(_parameters.containsKey('orderBy'));
-    assert(!_parameters.containsKey('endAfter'));
+    assert(!_parameters.containsKey('endBefore'));
     assert(!_parameters.containsKey('endAt'));
-    assert(!_parameters.containsKey('endAfterDocument'));
+    assert(!_parameters.containsKey('endBeforeDocument'));
     assert(!_parameters.containsKey('endAtDocument'));
     return _copyWithParameters(<String, dynamic>{
       'endAt': value });
@@ -208,13 +208,13 @@ class Query {
 
   /// Creates and returns a new [Query] that ends at the provided document
   /// [documentSnapshot] relative to the order of the query. Valid only if
-  /// [orderBy] had been issued. Conflicts with  [endAfterDocument], [endAt],
-  /// and [endAfter].
+  /// [orderBy] had been issued. Conflicts with  [endBeforeDocument], [endAt],
+  /// and [endBefore].
   Query endAtDocument(DocumentSnapshot documentSnapshot) {
     assert(_parameters.containsKey('orderBy'));
-    assert(!_parameters.containsKey('endAfter'));
+    assert(!_parameters.containsKey('endBefore'));
     assert(!_parameters.containsKey('endAt'));
-    assert(!_parameters.containsKey('endAfterDocument'));
+    assert(!_parameters.containsKey('endBeforeDocument'));
     assert(!_parameters.containsKey('endAtDocument'));
     return _copyWithParameters(<String, DocumentSnapshot>{
       'endAt': documentSnapshot });
@@ -223,29 +223,29 @@ class Query {
   /// Creates and returns a new [Query] that ends after the provided fields
   /// [value] relative to the order of the query. Valid only if [orderBy] had
   /// been issued. Conflicts with [endAt], [endAtDocument], and
-  /// [endAfterDocument].
-  Query endAfter(dynamic value) {
+  /// [endBeforeDocument].
+  Query endBefore(dynamic value) {
     assert(_parameters.containsKey('orderBy'));
-    assert(!_parameters.containsKey('endAfter'));
+    assert(!_parameters.containsKey('endBefore'));
     assert(!_parameters.containsKey('endAt'));
-    assert(!_parameters.containsKey('endAfterDocument'));
+    assert(!_parameters.containsKey('endBeforeDocument'));
     assert(!_parameters.containsKey('endAtDocument'));
     return _copyWithParameters(<String, dynamic>{
-      'endAfter': value });
+      'endBefore': value });
   }
 
   /// Creates and returns a new [Query] that ends after the provided document
   /// [documentSnapshot] relative to the order of the query. Valid only if
   /// [orderBy] had been issued. [endAtDocument], [endAt],
-  /// and [endAfter].
-  Query endAfterDocument(DocumentSnapshot documentSnapshot) {
+  /// and [endBefore].
+  Query endBeforeDocument(DocumentSnapshot documentSnapshot) {
     assert(_parameters.containsKey('orderBy'));
-    assert(!_parameters.containsKey('endAfter'));
+    assert(!_parameters.containsKey('endBefore'));
     assert(!_parameters.containsKey('endAt'));
-    assert(!_parameters.containsKey('endAfterDocument'));
+    assert(!_parameters.containsKey('endBeforeDocument'));
     assert(!_parameters.containsKey('endAtDocument'));
     return _copyWithParameters(<String, DocumentSnapshot>{
-      'endAfter': documentSnapshot });
+      'endBefore': documentSnapshot });
   }
 
   /// Creates and returns a new [Query] that's additionally limited to only
