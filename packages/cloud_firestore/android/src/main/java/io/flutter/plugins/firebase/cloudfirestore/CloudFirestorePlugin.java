@@ -126,9 +126,13 @@ public class CloudFirestorePlugin implements MethodCallHandler {
     if (documentSnapshotEB != null)
       query = query.endBefore(documentSnapshotEB);
     @SuppressWarnings("unchecked")
-    Integer limit = (Integer) parameters.get("limit");
-    if (limit != null)
+    if (parameters.get("limit") != null) {
+      try
+        Long limit = (Long) parameters.get("limit");
+      catch
+        Long limit = new Long((Integer) parameters.get("limit"));
       query = query.limit(limit);
+    }
     return query;
   }
 
